@@ -1,0 +1,44 @@
+<aside class="sidebar">
+  <a class="brand" routerLink="/dashboard" aria-label="VitalHealth dashboard">
+    <img src="/images/brand/vital-health-logo.png" alt="VitalHealth" />
+  </a>
+  <nav aria-label="Main navigation">
+    @for (item of navigation; track item.route) {
+      <a [routerLink]="item.route" routerLinkActive="active">
+        <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+          @switch (item.icon) {
+            @case ('home') {
+              <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z" />
+            }
+            @case ('pill') {
+              <path d="M10.5 4.5 4.4 10.6a4.2 4.2 0 0 0 6 6l6.1-6.1a4.2 4.2 0 0 0-6-6Z" /><path d="m8 13 6-6" />
+            }
+            @case ('clipboard') {
+              <rect x="5" y="4" width="14" height="17" rx="2" /><path d="M9 4V2h6v2M9 9h6M9 13h6M9 17h4" />
+            }
+            @case ('users') {
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM17 11a3.5 3.5 0 0 0 0-7M22 21v-2a4 4 0 0 0-3-3.7" />
+            }
+            @case ('prescription') {
+              <path d="M6 2h9l4 4v16H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" /><path d="M14 2v5h5M8 11h5a2 2 0 0 1 0 4H8v-4Zm3 4 4 5M15 15l-4 5" />
+            }
+            @case ('file') {
+              <path d="M6 2h9l4 4v16H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" /><path d="M14 2v5h5M8 12h8M8 16h8" />
+            }
+            @case ('settings') {
+              <circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.6v-.2h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1Z" />
+            }
+            @case ('headphones') {
+              <path d="M4 14v-2a8 8 0 0 1 16 0v2M4 14H2v5h4v-7M20 14h2v5h-4v-7M18 21h-4" />
+            }
+          }
+        </svg>
+        <span class="nav-label">{{ item.label }}</span>
+      </a>
+    }
+  </nav>
+  <div class="sidebar__footer">
+    <section class="verified"><b>✓</b><div><strong>Provider Verified</strong><span>License, NPI & DEA<br/>Verified</span><a href="#">View Profile</a></div></section>
+    <section class="help"><span class="headset">◉</span><div><strong>Need Help?</strong><span>support&#64;vitalhealth.com</span><span>(800) 123-4567</span></div></section>
+  </div>
+</aside>

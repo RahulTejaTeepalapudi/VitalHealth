@@ -1,0 +1,53 @@
+<div class="dashboard-heading">
+  <div><h1>Welcome back, Dr. James Carter <span>👋</span></h1><p>Order medications, track deliveries, and manage prescriptions – all in one place.</p></div>
+  <button class="cart-button" type="button">🛒 <span>Cart ({{ store.cartCount() }})</span></button>
+</div>
+
+@if (store.summary(); as summary) {
+  <section class="summary-grid" aria-label="Account summary">
+    <article><i class="summary-icon blue">◇</i><div><span>Open Orders</span><strong>{{ summary.openOrders }}</strong><a href="#">View orders　→</a></div></article>
+    <article><i class="summary-icon green">▣</i><div><span>In Transit</span><strong>{{ summary.inTransit }}</strong><a href="#">Track shipments　→</a></div></article>
+    <article><i class="summary-icon purple">✓</i><div><span>Delivered (30 Days)</span><strong>{{ summary.deliveredLast30Days }}</strong><a href="#">View history　→</a></div></article>
+    <article><i class="summary-icon orange">▤</i><div><span>Invoices Due</span><strong>{{ summary.invoicesDue | currency }}</strong><a href="#">View invoices　→</a></div></article>
+  </section>
+}
+
+<div class="dashboard-grid">
+  <div class="dashboard-main">
+    <section class="panel medications-panel">
+      <header><h2>Popular Medications</h2><a href="#">View All Products　→</a></header>
+      <div class="medications-grid">
+        @for (medication of store.medications(); track medication.id) {
+          <medication-card [medication]="medication" (addToCart)="store.addToCart($event)" />
+        }
+      </div>
+    </section>
+
+    <section class="panel orders-panel">
+      <header><h2>Recent Orders</h2><a href="#">View All Orders　→</a></header>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Order #</th><th>Date</th><th>Items</th><th>Status</th><th>Tracking</th><th>Total</th><th></th></tr></thead>
+        <tbody>
+          @for (order of store.recentOrders(); track order.id) {
+            <tr><td>#{{ order.orderNumber }}</td><td>{{ order.orderDate }}</td><td>{{ order.itemCount }} Item{{ order.itemCount === 1 ? '' : 's' }}</td><td><span class="status" [class]="'status ' + order.status">{{ statusLabel(order.status) }}</span></td><td>{{ order.trackingNumber || '–' }}</td><td>{{ order.total | currency }}</td><td>›</td></tr>
+          }
+        </tbody>
+      </table></div>
+    </section>
+  </div>
+
+  <aside class="order-column">
+    <section class="panel cart-panel">
+      <header><h2>Your Order ({{ store.cartCount() }})</h2><button type="button" (click)="store.clearCart()">Clear Cart</button></header>
+      <div class="cart-items">
+        @for (item of store.cartItems(); track item.medicationId) {
+          <article class="cart-item"><div class="cart-item__image"><img [src]="item.imageUrl" [alt]="item.name" /></div><div class="cart-item__details"><strong>{{ item.name }}</strong><span>{{ item.strength }}　|　{{ item.packageSize }}</span><span>Qty: {{ item.quantity }}</span></div><div class="cart-item__end"><button type="button" (click)="store.removeFromCart(item.medicationId)" [attr.aria-label]="'Remove ' + item.name">×</button><strong>{{ item.unitPrice * item.quantity | currency }}</strong></div></article>
+        } @empty { <p class="empty-cart">Your cart is empty.</p> }
+      </div>
+      <div class="totals"><p><span>Subtotal</span><span>{{ store.cartSubtotal() | currency }}</span></p><p><span>Shipping</span><span>Free</span></p><p><span>Tax</span><span>$0.00</span></p><strong><span>Total</span><span>{{ store.cartTotal() | currency }}</span></strong></div>
+      <button class="checkout" type="button" [disabled]="!store.cartCount()">Review & Checkout　→</button>
+      <button class="draft" type="button">Save as Draft</button>
+    </section>
+    <section class="security"><b>✓</b><div><strong>Secure & Compliant</strong><p>All orders are HIPAA compliant and<br/>processed securely.</p></div></section>
+  </aside>
+</div>

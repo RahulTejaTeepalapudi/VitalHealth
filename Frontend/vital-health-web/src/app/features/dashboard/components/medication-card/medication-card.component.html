@@ -1,0 +1,10 @@
+<article class="medication-card">
+  <div class="medication-card__image"><img [src]="medication().imageUrl" [alt]="medication().name" /></div>
+  <div class="medication-card__body">
+    <h3>{{ medication().name }}</h3>
+    <p>{{ medication().strength }}</p>
+    <p>{{ medication().packageSize }} {{ medication().dosageForm }}</p>
+    <strong>{{ medication().price | currency }}</strong>
+    <button type="button" (click)="addToCart.emit(medication())">＋ Add to Cart</button>
+  </div>
+</article>

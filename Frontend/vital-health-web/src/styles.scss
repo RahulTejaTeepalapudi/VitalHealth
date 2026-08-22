@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'styles/reset';
+@use 'styles/typography';
+
+:root { --primary: #0868d7; --text: #10192d; --muted: #5b687a; --border: #dfe3e8; --shadow: 0 2px 7px rgba(15, 35, 65, .04); }
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; color: var(--text); background: #fff; }
+body { font-family: Inter, "Segoe UI", Arial, sans-serif; font-size: 14px; }
+button, input { font-family: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }

@@ -1,0 +1,8 @@
+:host { display: block; min-width: 0; }
+.medication-card { height: 100%; border: 1px solid var(--border); border-radius: 7px; display: flex; flex-direction: column; overflow: hidden; background: #fff; }
+.medication-card__image { height: 122px; display: grid; place-items: center; padding: 12px; }
+.medication-card__image img { max-height: 104px; max-width: 100%; object-fit: contain; }
+.medication-card__body { padding: 0 12px 11px; display: flex; flex-direction: column; flex: 1; }
+h3 { font-size: 13px; line-height: 1.3; min-height: 34px; margin: 0; } p { margin: 1px 0; color: var(--muted); font-size: 12px; } strong { font-size: 16px; margin: 13px 0 8px; margin-top: auto; }
+button { width: 100%; border: 1px solid #8bb9f2; color: var(--primary); background: white; border-radius: 5px; padding: 8px 5px; font-weight: 600; cursor: pointer; }
+button:hover { background: #edf5ff; }
