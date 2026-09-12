@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "postbuild": "node scripts/ensure-static-index.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:vital-health-web": "node dist/vital-health-web/server/server.mjs"
