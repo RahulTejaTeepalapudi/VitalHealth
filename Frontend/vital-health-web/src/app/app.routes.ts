@@ -1,7 +1,13 @@
 import { Routes } from '@angular/router';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { authenticatedShellGuard } from './core/guards/authenticated-shell.guard';
 
 export const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'auth/login'
+  },
   {
     path: 'auth',
     loadChildren: () => import('./features/auth/auth.routes').then(m => m.AUTH_ROUTES)
@@ -9,12 +15,8 @@ export const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
+    canMatch: [authenticatedShellGuard],
     children: [
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'auth/login'
-      },
       {
         path: 'dashboard',
         loadChildren: () =>
