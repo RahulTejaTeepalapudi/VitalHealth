@@ -2,10 +2,11 @@ import { CurrencyPipe } from '@angular/common';
 import { Component, inject, OnInit } from "@angular/core";
 import { DashboardStore } from "../../state/dashboard.store";
 import { MedicationCardComponent } from '../../components/medication-card/medication-card.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-page',
-  imports: [CurrencyPipe, MedicationCardComponent],
+  imports: [CurrencyPipe, MedicationCardComponent, RouterLink],
   providers: [DashboardStore],
   templateUrl: './dashboard-page.component.html',
   styleUrl: './dashboard-page.component.scss'

@@ -1,0 +1,2 @@
+import { CurrencyPipe } from '@angular/common';import { Component,inject } from '@angular/core';import { RouterLink } from '@angular/router';import { CheckoutStepperComponent } from '../../components/checkout-stepper/checkout-stepper.component';import { CheckoutService } from '../../services/checkout.service';
+@Component({selector:'app-order-review',imports:[CurrencyPipe,RouterLink,CheckoutStepperComponent],templateUrl:'./order-review.component.html',styleUrl:'./order-review.component.scss'})export class OrderReviewComponent{readonly checkout=inject(CheckoutService);}

@@ -1,0 +1,1 @@
+<div class="checkout-stepper" aria-label="Checkout progress">@for(step of [{n:1,l:'Shipping'},{n:2,l:'Payment'},{n:3,l:'Review'},{n:4,l:'Confirmation'}];track step.n){<div class="step" [class.active]="step.n===currentStep()" [class.complete]="step.n<currentStep()"><div><span>{{ step.n < currentStep() ? '✓' : step.n }}</span></div><small>{{ step.l }}</small></div>}</div>

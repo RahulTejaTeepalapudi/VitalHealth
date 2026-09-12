@@ -1,0 +1,2 @@
+import { Component, inject } from '@angular/core';import { RouterLink } from '@angular/router';import { CheckoutStepperComponent } from '../../components/checkout-stepper/checkout-stepper.component';import { CheckoutService } from '../../services/checkout.service';
+@Component({selector:'app-shipping',imports:[RouterLink,CheckoutStepperComponent],templateUrl:'./shipping.component.html',styleUrl:'./shipping.component.scss'}) export class ShippingComponent{readonly checkout=inject(CheckoutService);}

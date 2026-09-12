@@ -45,7 +45,7 @@
         } @empty { <p class="empty-cart">Your cart is empty.</p> }
       </div>
       <div class="totals"><p><span>Subtotal</span><span>{{ store.cartSubtotal() | currency }}</span></p><p><span>Shipping</span><span>Free</span></p><p><span>Tax</span><span>$0.00</span></p><strong><span>Total</span><span>{{ store.cartTotal() | currency }}</span></strong></div>
-      <button class="checkout" type="button" [disabled]="!store.cartCount()">Review & Checkout　→</button>
+      <a class="checkout" routerLink="/checkout/cart" [class.disabled]="!store.cartCount()">Review & Checkout　→</a>
       <button class="draft" type="button">Save as Draft</button>
     </section>
     <section class="security"><b>✓</b><div><strong>Secure & Compliant</strong><p>All orders are HIPAA compliant and<br/>processed securely.</p></div></section>

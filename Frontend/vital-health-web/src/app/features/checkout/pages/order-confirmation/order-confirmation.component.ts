@@ -1,0 +1,2 @@
+import { CurrencyPipe } from '@angular/common';import { Component,inject } from '@angular/core';import { RouterLink } from '@angular/router';import { CheckoutService } from '../../services/checkout.service';
+@Component({selector:'app-order-confirmation',imports:[CurrencyPipe,RouterLink],templateUrl:'./order-confirmation.component.html',styleUrl:'./order-confirmation.component.scss'})export class OrderConfirmationComponent{readonly checkout=inject(CheckoutService);}

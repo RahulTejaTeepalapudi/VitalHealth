@@ -60,6 +60,10 @@ export const routes: Routes = [
             .then(m => m.SettingsPageComponent)
       },
       {
+        path: 'checkout',
+        loadChildren: () => import('./features/checkout/checkout.routes').then(m => m.CHECKOUT_ROUTES)
+      },
+      {
         path: 'profile',
         loadComponent: () => import('./features/provider-profile/pages/provider-profile-page/provider-profile-page.component').then(m => m.ProviderProfilePageComponent)
       },
