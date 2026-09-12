@@ -1,0 +1,5 @@
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+@Component({ selector: 'app-signup-success', imports: [RouterLink], templateUrl: './signup-success.component.html', styleUrl: './signup-success.component.scss' })
+export class SignupSuccessComponent {}

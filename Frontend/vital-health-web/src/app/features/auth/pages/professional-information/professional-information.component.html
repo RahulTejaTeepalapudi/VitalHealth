@@ -1,0 +1,11 @@
+<section class="auth-card wide"><app-auth-brand /><h1 class="auth-card__title">Professional Information</h1><p class="auth-card__subtitle">Verify your credentials to access provider services</p><app-onboarding-stepper [currentStep]="2" />
+  <form class="form-grid" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="field"><label for="npi">NPI Number</label><input id="npi" formControlName="npiNumber" placeholder="1234567890" /></div>
+    <div class="field"><label for="dea">DEA Number (Optional)</label><input id="dea" formControlName="deaNumber" placeholder="Enter DEA number" /></div>
+    <div class="field"><label for="practice">Practice/Clinic Name</label><input id="practice" formControlName="practiceName" placeholder="Your Practice Name" /></div>
+    <div class="field"><label for="address">Practice Address</label><input id="address" formControlName="address" placeholder="1234 Medical Center Dr" /></div>
+    <div class="form-row"><div class="field"><label for="city">City</label><input id="city" formControlName="city" placeholder="City" /></div><div class="field"><label for="state">State</label><select id="state" formControlName="state"><option value="">Select</option>@for(state of states;track state){<option [value]="state">{{ state }}</option>}</select></div><div class="field"><label for="zip">ZIP Code</label><input id="zip" formControlName="zipCode" placeholder="12345" /></div></div>
+    <div class="field"><label for="phone">Phone Number</label><input id="phone" type="tel" formControlName="phone" placeholder="(000) 123-4567" /></div>
+    <div class="button-row"><a class="secondary-button back" routerLink="/auth/signup">Back</a><button class="primary-button" type="submit">Continue　→</button></div>
+  </form>
+</section>

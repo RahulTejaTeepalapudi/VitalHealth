@@ -1,0 +1,19 @@
+<div class="profile-heading"><div><h1>Provider Profile</h1><p>Manage your personal and professional information</p></div><button type="button" (click)="toggleEdit()">{{ editing() ? '✓ Save Profile' : '✎ Edit Profile' }}</button></div>
+<section class="profile-panel">
+  <nav class="tabs" aria-label="Profile sections">
+    <button [class.active]="activeTab() === 'profile'" (click)="setTab('profile')">Profile Information</button><button [class.active]="activeTab() === 'credentials'" (click)="setTab('credentials')">Professional Credentials</button><button [class.active]="activeTab() === 'practice'" (click)="setTab('practice')">Practice Details</button><button [class.active]="activeTab() === 'notifications'" (click)="setTab('notifications')">Notification Preferences</button><button [class.active]="activeTab() === 'security'" (click)="setTab('security')">Security</button>
+  </nav>
+  @if (activeTab() === 'profile' || activeTab() === 'credentials' || activeTab() === 'practice') {
+    <div class="profile-content">
+      <aside class="identity"><img [src]="profile.imageUrl" [alt]="profile.fullName" /><h2>{{ profile.fullName }}</h2><p>{{ profile.title }}</p><span>NPI: {{ profile.npiNumber }}</span><button type="button">▣ Change Photo</button><b>✓ Verified Provider</b></aside>
+      <form [formGroup]="form">
+        <fieldset [disabled]="!editing()"><legend>Personal Information</legend><div class="form-row three"><label>Full Name<input formControlName="fullName" /></label><label>Email Address<input formControlName="email" /></label><label>Phone Number<input formControlName="phone" /></label></div></fieldset>
+        <fieldset [disabled]="!editing()"><legend>Professional Information</legend><div class="form-row three"><label>NPI Number<input formControlName="npiNumber" /></label><label>DEA Number<input formControlName="deaNumber" /></label><label>Specialty<select formControlName="specialty"><option>Family Medicine</option><option>Internal Medicine</option><option>Cardiology</option></select></label></div><div class="form-row two"><label>Practice/Clinic Name<input formControlName="practiceName" /></label><label>Practice Address<input formControlName="address" /></label></div><div class="form-row three"><label>City<input formControlName="city" /></label><label>State<input formControlName="state" /></label><label>ZIP Code<input formControlName="zipCode" /></label></div></fieldset>
+      </form>
+    </div>
+  } @else if (activeTab() === 'notifications') {
+    <div class="preference-content"><h2>Notification Preferences</h2><label><input type="checkbox" checked /> Order and shipment updates</label><label><input type="checkbox" checked /> Prescription notifications</label><label><input type="checkbox" /> Product and service announcements</label></div>
+  } @else {
+    <div class="preference-content"><h2>Account Security</h2><p>Your account uses secure password authentication.</p><button type="button">Change Password</button></div>
+  }
+</section>

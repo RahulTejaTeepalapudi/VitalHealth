@@ -1,0 +1,16 @@
+<section class="login-card">
+  <div class="login-form">
+    <app-auth-brand />
+    <div class="welcome"><h1>Welcome Back</h1><p>Sign in to your provider account</p></div>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="field"><label for="email">Email address</label><input id="email" type="email" formControlName="email" placeholder="name@practice.com" /></div>
+      <div class="field"><label for="password">Password</label><div class="password-wrap"><input id="password" [type]="passwordVisible() ? 'text' : 'password'" formControlName="password" placeholder="Enter your password" /><button type="button" (click)="passwordVisible.set(!passwordVisible())" aria-label="Toggle password visibility">◉</button></div></div>
+      <div class="form-options"><label><input type="checkbox" formControlName="rememberMe" /> Remember me</label><a href="#">Forgot password?</a></div>
+      <button class="primary-button" type="submit">Sign In　→</button>
+    </form>
+    <div class="divider">or continue with</div>
+    <button class="google" type="button"><b>G</b> Sign in with Google</button>
+    <p class="auth-footer">Don't have an account?　<a routerLink="/auth/signup">Sign up</a></p>
+  </div>
+  <aside class="login-benefits"><h2>Trusted Pharmacy<br/>For Healthcare Providers</h2><ul><li><i>✉</i>Order FDA-approved medications</li><li><i>▣</i>Manage prescriptions and deliveries</li><li><i>✓</i>Compliant and secure (HIPAA)</li></ul><div class="medication-art"><img src="/images/medications/testosterone-cypionate.png" alt="Medication vial" /></div></aside>
+</section>

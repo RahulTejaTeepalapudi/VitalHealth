@@ -1,0 +1,8 @@
+<section class="auth-card wide"><app-auth-brand /><h1 class="auth-card__title">Verify Your Identity</h1><p class="auth-card__subtitle">For security and compliance, please verify your identity.</p><app-onboarding-stepper [currentStep]="3" />
+  <div class="methods">
+    <button type="button" [class.selected]="selectedMethod() === 'npi'" (click)="select('npi')"><i>◎</i><span><strong>Verify with NPI</strong><small>We'll validate your NPI against official records.</small></span><b>›</b></button>
+    <button type="button" [class.selected]="selectedMethod() === 'documents'" (click)="select('documents')"><i>▤</i><span><strong>Upload Documents</strong><small>Upload your medical license and DEA (optional).</small></span><b>›</b></button>
+    <button type="button" [class.selected]="selectedMethod() === 'email'" (click)="select('email')"><i>✉</i><span><strong>Verify via Email</strong><small>We'll send a verification link to your email.</small></span><b>›</b></button>
+  </div>
+  <div class="button-row"><a class="secondary-button back" routerLink="/auth/professional-information">Back</a><button class="primary-button" type="button" [disabled]="!selectedMethod()" (click)="submit()">Submit for Verification</button></div>
+</section>

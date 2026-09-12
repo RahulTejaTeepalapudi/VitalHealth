@@ -3,13 +3,17 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
 
 export const routes: Routes = [
   {
+    path: 'auth',
+    loadChildren: () => import('./features/auth/auth.routes').then(m => m.AUTH_ROUTES)
+  },
+  {
     path: '',
     component: MainLayoutComponent,
     children: [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'dashboard'
+        redirectTo: 'auth/login'
       },
       {
         path: 'dashboard',
@@ -54,6 +58,10 @@ export const routes: Routes = [
             .then(m => m.SettingsPageComponent)
       },
       {
+        path: 'profile',
+        loadComponent: () => import('./features/provider-profile/pages/provider-profile-page/provider-profile-page.component').then(m => m.ProviderProfilePageComponent)
+      },
+      {
         path: 'support',
         loadComponent: () =>
           import('./features/support/pages/support-page/support-page.component')
@@ -63,6 +71,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'dashboard'
+    redirectTo: 'auth/login'
   }
 ];

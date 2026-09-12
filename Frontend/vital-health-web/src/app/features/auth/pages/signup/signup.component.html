@@ -1,0 +1,9 @@
+<section class="auth-card"><app-auth-brand /><h1 class="auth-card__title">Create Your Provider Account</h1><p class="auth-card__subtitle">Get started in a few simple steps</p><app-onboarding-stepper [currentStep]="1" />
+  <form class="form-grid" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="field"><label for="fullName">Full Name</label><input id="fullName" formControlName="fullName" placeholder="Dr. James Carter" /></div>
+    <div class="field"><label for="signupEmail">Email address</label><input id="signupEmail" type="email" formControlName="email" placeholder="name@practice.com" /></div>
+    <div class="field"><label for="newPassword">Create Password</label><div class="password-wrap"><input id="newPassword" [type]="passwordVisible() ? 'text' : 'password'" formControlName="password" placeholder="Minimum 8 characters" /><button type="button" (click)="passwordVisible.set(!passwordVisible())">◉</button></div></div>
+    <label class="checkbox"><input type="checkbox" formControlName="terms" /><span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span></label>
+    <button class="primary-button" type="submit">Continue　→</button>
+  </form><p class="auth-footer">Already have an account?　<a routerLink="/auth/login" class="text-link">Sign in</a></p>
+</section>

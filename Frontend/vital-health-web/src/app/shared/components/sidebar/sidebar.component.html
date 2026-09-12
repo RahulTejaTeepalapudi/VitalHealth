@@ -35,6 +35,12 @@
         </svg>
         <span class="nav-label">{{ item.label }}</span>
       </a>
+      @if (item.icon === 'settings') {
+        <a class="subnav" routerLink="/profile" routerLinkActive="active">Profile</a>
+        <a class="subnav logout" routerLink="/auth/login">
+          Logout
+        </a>
+      }
     }
   </nav>
   <div class="sidebar__footer">
