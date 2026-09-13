@@ -19,6 +19,7 @@ export class DashboardStore {
   readonly cartItems = signal<CartItem[]>([]);
 
   readonly loading = signal(false);
+  readonly draftMessage = signal('');
 
   readonly cartCount = computed(() =>
     this.cartItems().reduce(
@@ -65,4 +66,13 @@ export class DashboardStore {
   }
 
   clearCart(): void { this.cartItems.set([]); }
+
+  saveDraft(): void {
+    if (!this.cartItems().length) {
+      this.draftMessage.set('Add an item before saving a draft.');
+      return;
+    }
+    this.dashboardService.saveDraft(this.cartItems());
+    this.draftMessage.set('Order draft saved successfully.');
+  }
 }
