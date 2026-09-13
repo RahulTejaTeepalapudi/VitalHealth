@@ -1,0 +1,2 @@
+import { Injectable } from '@angular/core';import { ORDERS } from '../data/orders.mock-data';import { Order } from '../models/order.model';
+@Injectable({providedIn:'root'})export class OrdersService{getOrders():Order[]{return ORDERS.map(order=>({...order,items:order.items.map(item=>({...item}))}))}getOrder(id:string):Order|undefined{return this.getOrders().find(order=>order.id===id)}getTotal(order:Order):number{return order.items.reduce((sum,item)=>sum+item.price*item.quantity,0)+order.shipping+order.tax}}

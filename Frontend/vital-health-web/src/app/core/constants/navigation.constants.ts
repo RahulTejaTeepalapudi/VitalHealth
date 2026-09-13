@@ -15,21 +15,6 @@ export const MAIN_NAVIGATION = [
     route: '/orders'
   },
   {
-    label: 'Patients',
-    icon: 'users',
-    route: '/patients'
-  },
-  {
-    label: 'Prescriptions',
-    icon: 'prescription',
-    route: '/prescriptions'
-  },
-  {
-    label: 'Invoices',
-    icon: 'file',
-    route: '/invoices'
-  },
-  {
     label: 'Settings',
     icon: 'settings',
     route: '/settings'

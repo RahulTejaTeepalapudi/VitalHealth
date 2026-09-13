@@ -36,6 +36,14 @@ export const routes: Routes = [
             .then(m => m.OrdersPageComponent)
       },
       {
+        path: 'orders/:id/invoice',
+        loadComponent: () => import('./features/orders/pages/invoice-page/invoice-page.component').then(m => m.InvoicePageComponent)
+      },
+      {
+        path: 'orders/:id',
+        loadComponent: () => import('./features/orders/pages/order-details-page/order-details-page.component').then(m => m.OrderDetailsPageComponent)
+      },
+      {
         path: 'patients',
         loadComponent: () =>
           import('./features/patients/pages/patients-page/patients-page.component')
